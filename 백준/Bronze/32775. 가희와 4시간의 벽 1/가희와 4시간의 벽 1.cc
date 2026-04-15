@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() 
+{
+    int s, f;
+    cin >> s >> f;
+    
+    cout << (s > f ? "flight" : "high speed rail");
+    
+    return 0;
+}
