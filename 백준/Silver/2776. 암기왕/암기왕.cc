@@ -1,6 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int bs(vector<int>& arr, int n) {
+    int s = 0, e = arr.size() - 1;
+
+    while (s <= e) {
+        int mid = (s + e) / 2;
+
+        if (arr[mid] == n) {
+            return 1;
+        }
+        else if (arr[mid] > n) {
+            e = mid - 1;
+        }
+        else {
+            s = mid + 1;
+        }
+    }
+
+    return 0;
+}
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
@@ -9,7 +29,7 @@ int main() {
     cin >> t;
 
     while (t--) {
-        unordered_map<int, int> mrr;
+        vector<int> arr, brr;
         int n, m;
 
         cin >> n;
@@ -17,7 +37,7 @@ int main() {
             int tmp;
             cin >> tmp;
 
-            mrr[tmp]++;
+            arr.push_back(tmp);
         }
 
         cin >> m;
@@ -25,7 +45,13 @@ int main() {
             int tmp;
             cin >> tmp;
 
-            cout << (mrr[tmp] >= 1 ? 1 : 0) << '\n';
+            brr.push_back(tmp);
+        }
+
+        sort(arr.begin(), arr.end());
+
+        for (int i = 0; i < m; i++) {
+            cout << bs(arr, brr[i]) << '\n';
         }
     }
 
