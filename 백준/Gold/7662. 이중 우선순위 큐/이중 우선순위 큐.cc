@@ -12,7 +12,9 @@ int main() {
 		int k;
 		cin >> k;
 
-		multiset<int> dpq;
+		priority_queue<int> maxPq;
+		priority_queue<int, vector<int>, greater<>> minPq;
+		unordered_map<int, int> count;
 
 		while (k--) {
 			char cmd;
@@ -22,23 +24,39 @@ int main() {
 				int n;
 				cin >> n;
 
-				dpq.insert(n);
+				maxPq.push(n), minPq.push(n);
+				count[n]++;
 			}
 			else if (cmd == 'D') {
 				int n;
 				cin >> n;
 
-				if (n == 1 && !dpq.empty()) {
-					dpq.erase(prev(dpq.end()));
+				if (n == 1) {
+					while (!maxPq.empty() && count[maxPq.top()] == 0) {
+						maxPq.pop();
+					}
+					if (!maxPq.empty()) {
+						count[maxPq.top()]--;
+						maxPq.pop();
+					}
 				}
-				else if (n == -1 && !dpq.empty()) {
-					dpq.erase(dpq.begin());
+				else if (n == -1) {
+					while (!minPq.empty() && count[minPq.top()] == 0) {
+						minPq.pop();
+					}
+					if (!minPq.empty()) {
+						count[minPq.top()]--;
+						minPq.pop();
+					}
 				}
 			}
 		}
 
-		if (!dpq.empty()) {
-			cout << *prev(dpq.end()) << ' ' << *dpq.begin() << '\n';
+		while (!maxPq.empty() && count[maxPq.top()] == 0) maxPq.pop();
+		while (!minPq.empty() && count[minPq.top()] == 0) minPq.pop();
+
+		if (!maxPq.empty()) {
+			cout << maxPq.top() << ' ' << minPq.top() << '\n';
 		}
 		else cout << "EMPTY\n";
 	}
