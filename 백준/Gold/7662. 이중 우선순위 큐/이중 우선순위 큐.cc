@@ -32,7 +32,7 @@ int main() {
 					dpq.erase(prev(dpq.end()));
 				}
 				else if (n == -1 && !dpq.empty()) {
-					if (!dpq.empty()) dpq.erase(dpq.begin());
+					dpq.erase(dpq.begin());
 				}
 			}
 		}
