@@ -1,12 +1,24 @@
-<html>
-<head><title>502 Bad Gateway</title></head>
-<body>
-<center><h1>502 Bad Gateway</h1></center>
-</body>
-</html>
-<!-- a padding to disable MSIE and Chrome friendly error page -->
-<!-- a padding to disable MSIE and Chrome friendly error page -->
-<!-- a padding to disable MSIE and Chrome friendly error page -->
-<!-- a padding to disable MSIE and Chrome friendly error page -->
-<!-- a padding to disable MSIE and Chrome friendly error page -->
-<!-- a padding to disable MSIE and Chrome friendly error page -->
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	int n;
+	cin >> n;
+
+	vector<int> c(n);
+	for (int i = 0; i < n; i++) cin >> c[i];
+
+	sort(c.rbegin(), c.rend());
+
+	long long total = 0;
+	for (int i = 0; i < n; i++) {
+		if (i % 3 != 2) total += c[i];
+	}
+
+	cout << total;
+
+	return 0;
+}
