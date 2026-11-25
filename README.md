@@ -6,8 +6,8 @@
 ## solved.ac 프로필
 
 <div align="center">
-  <a href="https://solved.ac/profile/chohyeon">
-    <img src="https://mazassumnida.wtf/api/v2/generate_badge?boj=ChoHyeon" alt="Solved.ac 프로필" />
+  <a href="https://solved.ac/profile/yunnk">
+    <img src="https://mazassumnida.wtf/api/v2/generate_badge?boj=yunnk" alt="Solved.ac 프로필" />
   </a>
 </div>
 
